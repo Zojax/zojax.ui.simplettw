@@ -1,0 +1,3 @@
+<tal:block content="structure pageelement:portal.logo" />
+
+<div tal:content="context/@@absolute_url"></div>

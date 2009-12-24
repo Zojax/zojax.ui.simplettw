@@ -1,0 +1,9 @@
+<html>
+  <head>
+    <tal:block define="context nocall:maincontext"
+     content="structure pageelement:portal.favicon" />
+  </head>
+  <body>
+    <div tal:content="structure view/render" />
+  </body>
+</html>

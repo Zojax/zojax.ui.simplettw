@@ -1,0 +1,15 @@
+<div class="z-frame">
+  <h1 tal:content="context/title"></h1>
+  <div class="z-page-description" tal:content="context/description"></div>
+
+  <br />
+  <img tal:attributes="src python:path('context/++resource++%s'%context.name)" />
+  <br />
+  <form method="post" tal:attributes="action request/URL">
+    <div class="z-form-controls">
+      <hr />
+      <input type="submit" name="form.button.customize"
+	     value="Customize" class="z-form-button" />
+    </div>
+  </form>
+</div>

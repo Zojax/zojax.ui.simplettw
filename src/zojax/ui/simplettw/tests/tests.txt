@@ -1,0 +1,252 @@
+===========
+Simple TTW
+===========
+
+  >>> from zope import component
+  >>> from zope.testbrowser.testing import Browser
+  >>> from zope.app.component.hooks import setSite
+
+  >>> from zojax.ui.simplettw.tests.tests import simplettw, getPath
+  >>> from zojax.ui.simplettw.interfaces import ISimpleTTW
+  >>> root = simplettw.setup.getRootFolder()
+  >>> setSite(root)
+
+  >>> configlet = component.getUtility(ISimpleTTW)
+
+  >>> actor = Browser()
+  >>> actor.addHeader("Authorization", "Basic mgr:mgrpw")
+  >>> actor.handleErrors = False
+
+  >>> actor.open("http://localhost/test.html")
+  >>> print actor.contents
+  <html>
+    <head>
+      <link rel="shortcut icon" href="http://localhost/@@/zojax-resources/favicon.ico" />
+    </head>
+      <body>
+        <div><div id="z-content"><div id="z-portal-logo">
+      <a href="http://localhost/" name="top">
+        <img alt="" src="http://localhost/@@/zojax-resources/logo" />
+      </a>
+      </div><div>http://localhost</div></div></div>
+    </body>
+  </html>
+
+Configure logo
+
+    >>> admin = Browser()
+    >>> admin.handleErrors = False
+    >>> admin.addHeader("Authorization", "Basic mgr:mgrpw")
+
+    >>> admin.open("http://localhost/settings/")
+    >>> admin.getLink('TTW Theme customization').click()
+    >>> admin.getLink('Header: Logo - Image').click()
+    >>> print admin.contents
+    <html>
+    ...
+      <h1>Header: Logo - Image</h1>
+      <div class="z-page-description"></div>
+      <br />
+      <img src="http://localhost/@@/logo" />
+    ...
+    </html>
+
+    >>> admin.getControl('Customize').click()
+    >>> admin.getLink('Content', url="context.html/content/").click()
+    >>> admin.getControl('Resource data').mech_control.add_file(
+    ...     open(getPath('image.jpg')), filename='image.jpg')
+    >>> admin.getControl(name='content.edit.buttons.save').click()
+
+    >>> admin.open("http://localhost/settings/")
+    >>> admin.getLink('TTW Theme customization').click()
+    >>> admin.getLink('Header: Favicon - Image').click()
+    >>> admin.getControl('Customize').click()
+    >>> admin.getLink('Content', url="context.html/content/").click()
+    >>> admin.getControl('Resource data').mech_control.add_file(
+    ...     open(getPath('image.jpg')), filename='image.jpg')
+    >>> admin.getControl(name='content.edit.buttons.save').click()
+
+We see logo and favicon
+
+    >>> actor.open("http://localhost/test.html")
+    >>> print actor.contents
+    <html>
+      <head>
+        <link rel="shortcut icon" href="http://localhost/@@/zojax-resources/favicon.ico" />
+      </head>
+      <body>
+        <div><div id="z-content"><div id="z-portal-logo">
+      <a href="http://localhost/" name="top">
+        <img alt="" src="http://localhost/@@/zojax-resources/logo" />
+      </a>
+    </div><div>http://localhost</div></div></div>
+      </body>
+    </html>
+
+    >>> actor.open("http://localhost/@@/zojax-resources/favicon.ico")
+    >>> actor.headers['content-length']
+    '755'
+
+We can upload ico to favicon
+
+    >>> admin.getLink('TTW Theme customization').click()
+    >>> admin.getLink('Header: Favicon - Image').click()
+    >>> admin.getLink('Content', url="context.html/content/").click()
+    >>> admin.getControl('Resource data').mech_control.add_file(
+    ...     open(getPath('image.ico')), filename='image.ico')
+    >>> admin.getControl(name='content.edit.buttons.save').click()
+
+We see favicon resource
+
+    >>> actor.open("http://localhost/@@/zojax-resources/favicon.ico")
+    >>> actor.headers['content-length']
+    '1406'
+    >>> actor.headers['content-type']
+    'image/...
+
+
+Footer
+------
+
+By default We see default footer
+
+    >>> actor.open("http://localhost/testfooter.html")
+    >>> print actor.contents
+    <html>
+    ...
+    <div><div id="z-content"><div id="z-portal-footer">
+       <div>Powered by <a href="http://zojax.net">zojax</a></div>
+       </div><div>http://localhost</div></div></div>
+      </body>
+    </html>
+
+Configure footer
+
+    >>> admin = Browser()
+    >>> admin.handleErrors = False
+    >>> admin.addHeader("Authorization", "Basic mgr:mgrpw")
+
+    >>> admin.open("http://localhost/settings/")
+    >>> admin.getLink('TTW Theme customization').click()
+    >>> admin.getLink('Portal footer').click()
+    >>> admin.getControl('Customize').click()
+    >>> admin.getLink('Content', url="context.html/content/").click()
+    >>> admin.getControl('Source').value = '<span>Some Footer</span>'
+    >>> admin.getControl(name='content.edit.buttons.save').click()
+
+We see footer
+
+    >>> actor.open("http://localhost/testfooter.html")
+    >>> print actor.contents
+    <html>
+    ...
+    ...Some Footer...<div>http://localhost</div></div></div>
+    ...
+    </html>
+
+
+`zojax:ttwelement` directive
+============================
+
+    >>> from zope.configuration import xmlconfig
+    >>> import zojax.ui.simplettw
+    >>> from zojax.pageelement.interfaces import IPageElement
+    >>> context = xmlconfig.file('meta.zcml', zojax.ui.simplettw)
+
+Very element
+
+    >>> import os, tempfile
+    >>> filename = tempfile.mkstemp()[1]
+    >>> open(filename, 'wb').write('''
+    ... <div>
+    ...   Test
+    ... </div>''')
+
+    >>> context = xmlconfig.string('''
+    ... <configure
+    ...    xmlns:zojax="http://namespaces.zope.org/zojax" i18n_domain="test">
+    ...
+    ...   <zojax:ttwelement
+    ...     name="element1"
+    ...     title="Element 1"
+    ...     description="Test element 1"
+    ...     template="%s" />
+    ...
+    ... </configure>'''%filename, context)
+
+    >>> from zope.publisher.browser import TestRequest
+    >>> request = TestRequest()
+
+We have registered factory:
+
+    >>> factory = component.getMultiAdapter(
+    ...     (root, request),
+    ...     zojax.ui.simplettw.interfaces.ITTWItemFactory, 'element1')
+    >>> factory.title
+    u'Element 1'
+    >>> factory.description
+    u'Test element 1'
+
+And page element:
+
+    >>> element = component.getMultiAdapter(
+    ...     (root, request, None), IPageElement, 'element1')
+    >>> element.title
+    u'Element 1'
+    >>> element.description
+    u'Test element 1'
+
+    >>> element.update()
+    >>> print element.render()
+    <div>
+      Test
+    </div>
+
+
+`zojax:ttresource` directive
+==========================
+
+Very resource
+
+   >>> import os, tempfile
+    >>> filename = tempfile.mkstemp()[1]
+    >>> open(filename, 'wb').write('''
+    ... <div>
+    ...   Test
+    ... </div>''')
+
+    >>> context = xmlconfig.string('''
+    ... <configure
+    ...    xmlns:zojax="http://namespaces.zope.org/zojax" i18n_domain="test">
+    ...
+    ...   <zojax:ttwresource
+    ...     name="resource1"
+    ...     title="Resource 1"
+    ...     description="Test resource 1"
+    ...     file="%s" />
+    ...
+    ... </configure>'''%filename, context)
+
+We have registered factory:
+
+    >>> factory = component.getMultiAdapter(
+    ...     (configlet, request),
+    ...     zojax.ui.simplettw.interfaces.ITTWItemFactory, 'resource1')
+    >>> factory.title
+    u'Resource 1'
+    >>> factory.description
+    u'Test resource 1'
+
+We call factory:
+
+    >>> factory.customize()
+    <zojax.persistentresource.file.FileResource object ...>
+
+    >>> factory.customItem
+    <zojax.persistentresource.file.FileResource object ...>
+
+    >>> actor.open("http://localhost/@@/zojax-resources/resource1")
+    >>> print actor.contents
+    <div>
+      Test
+    </div>

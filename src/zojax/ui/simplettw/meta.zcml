@@ -1,0 +1,16 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:meta="http://namespaces.zope.org/meta">
+
+  <meta:directives namespace="http://namespaces.zope.org/zojax">
+    <meta:directive
+       name="ttwelement"
+       schema=".zcml.ITTWElementDirective"
+       handler=".zcml.ttwElementDirective" />
+    <meta:directive
+       name="ttwresource"
+       schema=".zcml.ITTWResourceDirective"
+       handler=".zcml.ttwResourceDirective" />
+  </meta:directives>
+
+</configure>

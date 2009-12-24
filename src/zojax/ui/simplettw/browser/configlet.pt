@@ -1,0 +1,27 @@
+<tal:block i18n:domain="zojax.ui.simplettw">
+  <h1 i18n:translate=""
+      tal:content="layoutcontext/__title__"></h1>
+  <div class="z-page-description" i18n:translate=""
+       tal:content="layoutcontext/__description__"></div>
+
+  <div tal:condition="not:layout/isConfiglet"
+       tal:content="structure view/render" />
+
+  <div class="z-frame" i18n:domain="zojax.ui.simplettw"
+       tal:condition="layout/items">
+    <h1 i18n:translate="">Registered elements</h1>
+
+    <div>
+      <ul tal:define="url layoutcontext/@@absolute_url">
+	<li tal:repeat="item layout/items">
+          <a tal:attributes="href string:$url/${item/name}/">
+            <img tal:attributes="src item/icon/url"
+		 tal:condition="item/icon/url|nothing" />
+            <tal:block tal:content="item/title" /></a>
+	  <span class="discreet"
+		tal:condition="item/customized">(Customized)</span>
+	</li>
+      </ul>
+    </div>
+  </div>
+</tal:block>

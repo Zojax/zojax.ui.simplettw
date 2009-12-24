@@ -1,0 +1,28 @@
+=======
+CHANGES
+=======
+
+0.2.1 (2009-11-24)
+------------------
+
+- Added mime type attribute to ttwresource directive
+
+- Fixed favicon default element so it works with safari
+
+
+0.2.0 (2009-10-28)
+------------------
+
+- Use z3c.traverser in ttw elements configlet publisher
+
+
+0.1.1 (2009-09-23)
+------------------
+
+- Fixed unicode bug
+
+
+0.1.0 (2009-08-12)
+------------------
+
+- Initial release

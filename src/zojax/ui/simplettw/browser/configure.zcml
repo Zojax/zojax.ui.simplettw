@@ -1,0 +1,42 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.ui.portaltabs">
+
+  <!-- configlet layout -->
+  <zojax:layout
+     name="viewspace"
+     layout="workspace"
+     template="configlet.pt"
+     for="..interfaces.ISimpleTTW"
+     class=".configlet.SimpleTTWConfigletViewspace" />
+
+  <!-- configlet publisher -->
+  <adapter
+     for="..interfaces.ISimpleTTW *"
+     factory="z3c.traverser.traverser.PluggableTraverser"
+     provides="zope.publisher.interfaces.IPublishTraverse" />
+
+  <!-- publisher plugin -->
+  <subscriber
+     provides="z3c.traverser.interfaces.ITraverserPlugin"
+     factory=".publisher.ConfigletPublisher" />
+
+  <!-- ttw page element -->
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.ITTWPageElementFactory"
+     template="pageelement.pt"
+     class=".item.ItemFactory"
+     permission="zojax.Configure" />
+
+  <!-- ttw resource -->
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.ITTWResourceFactory"
+     template="resource.pt"
+     class=".item.ItemFactory"
+     permission="zojax.Configure" />
+
+</configure>
