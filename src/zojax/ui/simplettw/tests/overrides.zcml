@@ -1,0 +1,27 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zope">
+
+  <zojax:layout
+     name="portal"
+     title="Test layout"
+     for="zope.app.component.interfaces.ISite"
+     template="layoutportal.pt" />
+
+  <zojax:layout
+     name="workspace"
+     layout="portal"
+     title="Test layout"
+     for="zope.app.component.interfaces.ISite"
+     template="layoutworkspace.pt" />
+
+  <zojax:layout
+     name="viewspace"
+     layout="workspace"
+     title="Test layout"
+     for="zope.app.component.interfaces.ISite"
+     template="layoutworkspace.pt" />
+
+</configure>

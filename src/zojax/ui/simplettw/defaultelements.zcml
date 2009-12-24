@@ -1,0 +1,32 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.ui.simplettw">
+
+  <zojax:ttwelement
+     name="portal.footer"
+     title="Portal footer"
+     template="default/footer.pt" />
+
+  <zojax:ttwelement
+     name="portal.logo"
+     title="Header: Logo - Template"
+     template="default/logo.pt" />
+
+  <zojax:ttwelement
+     name="portal.favicon"
+     title="Header: Favicon - Template"
+     template="default/favicon.pt" />
+
+  <zojax:ttwresource
+     name="logo"
+     title="Header: Logo - Image"
+     file="default/logo.gif" />
+
+  <zojax:ttwresource
+     name="favicon.ico"
+     type="image/x-icon"
+     title="Header: Favicon - Image" 
+     file="default/favicon.gif" />
+
+</configure>

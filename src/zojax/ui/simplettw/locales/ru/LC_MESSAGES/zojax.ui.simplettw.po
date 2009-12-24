@@ -1,0 +1,58 @@
+# #############################################################################
+#
+# Copyright (c) 2009 Zope Foundation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+# #############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Wed Apr  8 20:54:02 2009\n"
+"PO-Revision-Date: 2008-11-14 12:11+0600\n"
+"Last-Translator: Nikolay Kim <fafhrd91@gmail.com>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/ui/logo/configlet.py:63
+msgid "Field is readonly"
+msgstr ""
+
+#: src/zojax/ui/logo/configure.zcml:25
+msgid "Header: Logo"
+msgstr ""
+
+#: src/zojax/ui/logo/configure.zcml:31
+msgid "Header: Favicon"
+msgstr ""
+
+#: src/zojax/ui/logo/configure.zcml:7
+msgid "Logo and favicon settings for site."
+msgstr ""
+
+#: src/zojax/ui/logo/configure.zcml:7
+msgid "Logo and Favicon"
+msgstr ""
+
+#: src/zojax/ui/logo/interfaces.py:30 src/zojax/ui/logo/interfaces.py:31
+msgid "Logo"
+msgstr ""
+
+#: src/zojax/ui/logo/interfaces.py:35 src/zojax/ui/logo/interfaces.py:36
+msgid "Favicon"
+msgstr ""
+
+#~ msgid "top"
+#~ msgstr "Основная"
+
+#~ msgid "You are here:"
+#~ msgstr "Вы здесь:"

@@ -1,0 +1,3 @@
+<link rel="shortcut icon" 
+      tal:define="site modules/zope.app.component/hooks/getSite"
+      tal:attributes="href string:${site/@@absolute_url}/@@/zojax-resources/favicon.ico"  />
