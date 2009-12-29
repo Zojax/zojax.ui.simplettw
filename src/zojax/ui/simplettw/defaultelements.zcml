@@ -21,7 +21,7 @@
   <zojax:ttwresource
      name="logo"
      title="Header: Logo - Image"
-     file="default/logo.gif" />
+     file="default/logo.png" />
 
   <zojax:ttwresource
      name="favicon.ico"
