@@ -8,7 +8,7 @@
   <form method="post" tal:attributes="action request/URL">
     <div class="z-form-controls">
       <hr />
-      <input type="submit" name="form.button.customize"
+      <input type="submit" name="form.button.customize" i18n:attributes="value"
 	     value="Customize" class="z-form-button" />
     </div>
   </form>

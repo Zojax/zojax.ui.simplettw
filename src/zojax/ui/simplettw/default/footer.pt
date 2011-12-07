@@ -1,3 +1,7 @@
 <div id="z-portal-footer">
-  <div>Powered by <a href="http://zojax.net">zojax</a></div>
+	<div i18n:translate="">Powered by 
+		<tal:block i18n:name="link">
+		<a href="http://zojax.net">zojax</a>
+		</tal:block>
+	</div>
 </div>
