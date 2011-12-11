@@ -1,7 +1,6 @@
 <tal:block i18n:domain="zojax.ui.simplettw">
-  <h1 i18n:translate=""
-      tal:content="layoutcontext/__title__"></h1>
-  <div class="z-page-description" i18n:translate=""
+  <h1 tal:content="layoutcontext/__title__"></h1>
+  <div class="z-page-description"
        tal:content="layoutcontext/__description__"></div>
 
   <div tal:condition="not:layout/isConfiglet"
