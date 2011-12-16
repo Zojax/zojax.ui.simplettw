@@ -1,0 +1,74 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Sun Dec 11 10:38:40 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/ui/simplettw/browser/configlet.pt:11
+msgid "Registered elements"
+msgstr ""
+
+#: src/zojax/ui/simplettw/browser/item.py:28
+msgid "TTW item has been customized."
+msgstr ""
+
+#: src/zojax/ui/simplettw/browser/pageelement.pt:11
+#: src/zojax/ui/simplettw/browser/resource.pt:11
+msgid "Customize"
+msgstr ""
+
+#: src/zojax/ui/simplettw/browser/pageelement.py:28
+msgid "Page element has been customized."
+msgstr ""
+
+#: src/zojax/ui/simplettw/configure.zcml:8
+msgid "TTW Theme customization"
+msgstr ""
+
+#: src/zojax/ui/simplettw/configure.zcml:8
+msgid "Simple ttw settings for site theme."
+msgstr ""
+
+#: src/zojax/ui/simplettw/default/footer.pt:3
+msgid "Powered by ${link}"
+msgstr ""
+
+#: src/zojax/ui/simplettw/defaultelements.zcml:11
+msgid "Header: Logo - Template"
+msgstr ""
+
+#: src/zojax/ui/simplettw/defaultelements.zcml:16
+msgid "Header: Favicon - Template"
+msgstr ""
+
+#: src/zojax/ui/simplettw/defaultelements.zcml:21
+msgid "Header: Logo - Image"
+msgstr ""
+
+#: src/zojax/ui/simplettw/defaultelements.zcml:26
+msgid "Header: Favicon - Image"
+msgstr ""
+
+#: src/zojax/ui/simplettw/defaultelements.zcml:6
+msgid "Portal footer"
+msgstr ""
+
