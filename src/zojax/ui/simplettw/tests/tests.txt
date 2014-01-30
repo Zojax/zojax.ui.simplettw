@@ -114,11 +114,13 @@ By default We see default footer
     >>> print actor.contents
     <html>
     ...
-    <div><div id="z-content"><div id="z-portal-footer">
-       <div>Powered by <a href="http://zojax.net">zojax</a></div>
-       </div><div>http://localhost</div></div></div>
+    	<div>Powered by
+    ...<a href="http://zojax.net">zojax</a>...
+    ...
+    </div><div>http://localhost</div></div></div>
       </body>
     </html>
+
 
 Configure footer
 
